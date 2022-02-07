@@ -2,23 +2,15 @@ import {
   AppBar, 
   Container, 
   CssBaseline, 
-  IconButton, 
-  MenuItem, 
   Toolbar,
-  Typography,
   Box,
   Button
 } from '@mui/material';
-
-import {
-  Menu
-} from '@mui/icons-material';
 
 import { 
   BrowserRouter as Router, 
   Routes, 
   Route,
-  Link
 } from 'react-router-dom';
 
 import { 
@@ -33,19 +25,17 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <AppBar position="static">
+      <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
-          <IconButton
-            size="small"
-            edge="start"
-            color="inherit"
-          >
-            <Menu />
-          </IconButton>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                sx={{color: 'white', display: 'block', textAlign: 'center'}}
+                sx={{
+                  color: 'black', 
+                  display: 'block', 
+                  textAlign: 'center',
+                  paddingRight: '70px'
+                }}
                 href={`/${page}`}
               >
                 {page}
