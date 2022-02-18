@@ -1,24 +1,59 @@
-import { 
+import {
+  TableContainer,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
   Typography,
-} from "@mui/material";
+  Fade,
+  Box
+} from '@mui/material';
+import { useState } from 'react';
 
-import { Table } from "../layouts";
+import { bio } from "../dataset";
 
 const Bio = () => {
-  const rows = {
-    titles: ["Year", "Month", "Background"], 
-    contents: [
-      {year: 2018, month: 4, bg: "京都外国語大学入学（外国語学部ドイツ語学科）"},
-      {year: 2022, month: 3, bg: "京都外国語大学卒業予定"},
-    ]
-  }
+  const [show] = useState(true);
 
   return (
     <>
-      <Typography variant="h2" align="center">
-        Bio
-      </Typography>
-      <Table rows={rows} />
+      <Fade in={show} timeout={2000}>
+        <Typography 
+          variant="h3" 
+          align="center"
+          fontWeight="light"
+          marginBottom="30px"
+        >
+          Bio
+        </Typography>
+      </Fade>
+      <Fade in={show} timeout={2500}>
+        <TableContainer 
+          sx={{
+            width: 'inherit',
+            paddingLeft: {sm: '80px', xs: '10px', lg: '200px'},
+            
+          }}
+        >
+            <TableHead
+            >
+              <TableRow>
+                {bio.titles.map((title) => (
+                  <TableCell>{title}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bio.contents.map((content, id) => (
+                <TableRow key={id}>
+                  <TableCell>{content.year}</TableCell>
+                  <TableCell>{content.month}</TableCell>
+                  <TableCell>{content.bg}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+        </TableContainer>
+      </Fade>
     </>
   )
 }
